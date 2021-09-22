@@ -46,7 +46,7 @@ namespace Task4
 
                     string finEmptStr = new string(emptStr); //Получаем строку из массива символов
                     Console.WriteLine(finEmptStr + str);
-                    emptStr = new char[(int)a - i -1]; //Один пробел превращаем в пустой символ
+                    emptStr = new char[(int)a - i -1]; //Cоздаём новый массив
                     str += "**";
                 }
 
