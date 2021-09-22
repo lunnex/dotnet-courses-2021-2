@@ -45,6 +45,7 @@ namespace Task4
                     }
 
                     string finEmptStr = new string(emptStr); //Получаем строку из массива символов
+                    finEmptStr = finEmptStr.Replace("\0", "");
                     Console.WriteLine(finEmptStr + str);
                     emptStr = new char[(int)a - i -1]; //Cоздаём новый массив
                     str += "**";
