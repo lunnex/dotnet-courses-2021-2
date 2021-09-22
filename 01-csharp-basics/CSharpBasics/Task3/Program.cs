@@ -31,16 +31,17 @@ namespace Task3
 
             char[] emptStr = new char[(int)a]; //Строка пробелов
 
-            for (int i = 0; i < a-1; i++)
-            {
-                emptStr[i] = ' ';
-            }
+
 
             for (int i = 0; i < a; i++)
             {
+                for (int j = 0; j < emptStr.Length - 1; j++)
+                {
+                    emptStr[j] = ' ';
+                }
                 string finEmptStr = new string(emptStr); //Получаем строку из массива символов
                 Console.WriteLine(finEmptStr + str);
-                emptStr[i] = '\0'; //Один пробел превращаем в пустой символ
+                emptStr = new char[(int)a-i-1]; //Один пробел превращаем в пустой символ
                 str += "**";
             }
 

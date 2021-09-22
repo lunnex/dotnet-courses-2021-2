@@ -30,25 +30,27 @@ namespace Task4
                 }
             }
 
-            char[] emptStr = new char[(int)a]; //Строка пробелов
+            //char[] emptStr = new char[(int)a]; //Строка пробелов
             int? b = a;
 
             for (int j = 0; j < a; j++)
             {
-                for (int i = 0; i < j+b-1; i++)
-                {
-                    emptStr[i] = ' '; //Заполняем строку пробелов
-                }
+                char[] emptStr = new char[(int)a]; //Строка пробелов
 
                 for (int i = 0; i < j+1; i++)
                 {
+                    for (int k = 0; k < emptStr.Length - 1; k++)
+                    {
+                        emptStr[k] = ' '; //Заполняем строку пробелов
+                    }
+
                     string finEmptStr = new string(emptStr); //Получаем строку из массива символов
                     Console.WriteLine(finEmptStr + str);
-                    emptStr[i] = '\0'; //Один пробел превращаем в пустой символ
+                    emptStr = new char[(int)a - i -1]; //Один пробел превращаем в пустой символ
                     str += "**";
                 }
 
-                emptStr = new char[(int)a]; //Создаем пустой массив для пробелов
+                //emptStr = new char[(int)a]; //Создаем пустой массив для пробелов
                 str = "*";
                 b--;
 
