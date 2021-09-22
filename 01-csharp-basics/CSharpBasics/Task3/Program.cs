@@ -39,7 +39,7 @@ namespace Task3
             for (int i = 0; i < a; i++)
             {
                 string finEmptStr = new string(emptStr); //Получаем строку из массива символов
-                Console.WriteLine(finEmptStr + str + finEmptStr);
+                Console.WriteLine(finEmptStr + str);
                 emptStr[i] = '\0'; //Один пробел превращаем в пустой символ
                 str += "**";
             }
