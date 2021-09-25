@@ -17,7 +17,7 @@ namespace Task2
                 {
                     for (int k = 0; k < ARRLEN; k++)
                     {
-                        arr[i, j, k] = rnd.Next(-100, 100);
+                        arr[i, j, k] = rnd.Next(0, 100);
                     }
                 }
             }
