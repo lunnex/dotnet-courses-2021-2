@@ -4,7 +4,7 @@ namespace Task4
 {
     class Program
     {
-        public const int ARRLEN = 4;
+        public const int ARRLEN = 2;
         public static int[,] MakeArr()
         {
             int[,] arr = new int[ARRLEN, ARRLEN];

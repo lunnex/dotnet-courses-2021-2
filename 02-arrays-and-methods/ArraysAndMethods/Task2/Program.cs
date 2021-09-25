@@ -17,7 +17,7 @@ namespace Task2
                 {
                     for (int k = 0; k < ARRLEN; k++)
                     {
-                        arr[i, j, k] = rnd.Next(0, 100);
+                        arr[i, j, k] = rnd.Next(-100, 100);
                     }
                 }
             }
@@ -26,11 +26,11 @@ namespace Task2
 
         public static void ReplacePositiveElementsWithZero(int[,,] arr)
         {
-            for (int i = 0; i < ARRLEN; i++)
+            for (int i = 0; i < arr.GetLength(0); i++)
             {
-                for (int j = 0; j < ARRLEN; j++)
+                for (int j = 0; j < arr.GetLength(1); j++)
                 {
-                    for (int k = 0; k < ARRLEN; k++)
+                    for (int k = 0; k < arr.GetLength(2); k++)
                     {
                         if (arr[i, j, k] > 0)
                         {
