@@ -2,21 +2,21 @@
 
 namespace Task1
 {
-    class Task1
+    class Program
     {
-        Random rnd = new Random();
         public const int ARRLEN = 9;
 
-        public void PrintArray(int[] arr)
+        public static void PrintArray(int[] arr)
         {
-            for(int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < arr.Length; i++)
             {
                 Console.WriteLine(arr[i]);
             }
         }
 
-        public int[] GenerateArray()
+        public static int[] GenerateArray()
         {
+            Random rnd = new Random();
             int[] arr = new int[ARRLEN];
             for (int i = 0; i < arr.Length; i++)
             {
@@ -25,11 +25,11 @@ namespace Task1
             return arr;
         }
 
-        private void QuickSort(int[] arr, int beg, int end)
+        private static void QuickSort(int[] arr, int beg, int end)
         {
             int l = (beg + end) / 2;    // Середина массива
             int left = beg;             // Левая граница массива
-            int right = end-1;          // Правая граница массива
+            int right = end - 1;          // Правая граница массива
             int a;                      // Вспомогательная переменная
 
             while (left < right)
@@ -54,7 +54,7 @@ namespace Task1
 
                 if (beg < right)                    // Пробегаемся, пока все элементы не будут на месте
                 {
-                    QuickSort(arr,beg, right);
+                    QuickSort(arr, beg, right);
                 }
                 if (end > left)
                 {
@@ -63,33 +63,27 @@ namespace Task1
             }
         }
 
-        public int[] SortAndGetMinAndMaxValues(int[] arr, out int min, out int max)
+        public static int[] SortAndGetMinAndMaxValues(int[] arr, out int min, out int max)
         {
             QuickSort(arr, 0, ARRLEN);
 
             min = arr[0];
-            max = arr[arr.Length-1];
+            max = arr[arr.Length - 1];
 
             return arr;
         }
-    }
 
-    class Program
-    {
-       
         static void Main(string[] args)
         {
-            Task1 tsk = new Task1();
-
-            int[] arr = new int[Task1.ARRLEN];
+            int[] arr = new int[ARRLEN];
             int a;
             int b;
 
-            arr = tsk.GenerateArray();
-            tsk.PrintArray(arr);
-            //Console.WriteLine("-------------------------------------");
-            arr = tsk.SortAndGetMinAndMaxValues(arr, out a, out b);
-            tsk.PrintArray(arr);
+            arr = GenerateArray();
+            PrintArray(arr);
+            Console.WriteLine("-------------------------------------");
+            arr = SortAndGetMinAndMaxValues(arr, out a, out b);
+            PrintArray(arr);
             Console.WriteLine($"Минимальный элемент: {a}, Максимальный элемент: {b}");
 
         }
