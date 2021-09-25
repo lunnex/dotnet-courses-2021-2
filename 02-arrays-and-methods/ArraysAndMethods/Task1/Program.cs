@@ -68,9 +68,9 @@ namespace Task1
             //QuickSort(arr, 0, ARRLEN);
 
             int bubble;
-            for (int i = 0; i < ARRLEN - 1; i++)
+            for (int i = 0; i < arr.Length - 1; i++)
             {
-                for (int j = 0; j < ARRLEN - 1; j++)
+                for (int j = 0; j < arr.Length - 1; j++)
                 {
                     if (arr[j] > arr[j + 1])
                     {
@@ -82,7 +82,7 @@ namespace Task1
             }
 
             min = arr[0];
-            max = arr[ARRLEN - 1];
+            max = arr[arr.Length - 1];
 
             return arr;
         }
