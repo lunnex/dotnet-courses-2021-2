@@ -68,7 +68,7 @@ namespace Task1
             QuickSort(arr, 0, ARRLEN);
 
             min = arr[0];
-            max = arr[arr.Length - 1];
+            max = arr[ARRLEN - 1];
 
             return arr;
         }
