@@ -87,9 +87,10 @@ namespace Task1
 
             arr = tsk.GenerateArray();
             tsk.PrintArray(arr);
-            Console.WriteLine("-------------------------------------");
+            //Console.WriteLine("-------------------------------------");
             arr = tsk.SortAndGetMinAndMaxValues(arr, out a, out b);
             tsk.PrintArray(arr);
+            Console.WriteLine($"Минимальный элемент: {a}, Максимальный элемент: {b}");
 
         }
     }

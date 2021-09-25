@@ -4,7 +4,7 @@ namespace Task2
 {
     class Program
     {
-        const int ARRLEN = 3;
+        const int ARRLEN = 2;
 
         public static int[,,] MakeArr()
         {
@@ -60,7 +60,7 @@ namespace Task2
             int[,,] arr = new int[ARRLEN, ARRLEN, ARRLEN];
             arr = MakeArr();
             PrintArray(arr);
-            Console.WriteLine("----------------------------------------------------------");
+            //Console.WriteLine("----------------------------------------------------------");
             ReplacePositiveElementsWithZero(arr);
             PrintArray(arr);
 
