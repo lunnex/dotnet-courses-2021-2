@@ -60,7 +60,7 @@ namespace Task2
             int[,,] arr = new int[ARRLEN, ARRLEN, ARRLEN];
             arr = MakeArr();
             PrintArray(arr);
-            //Console.WriteLine("----------------------------------------------------------");
+            Console.WriteLine("----------------------------------------------------------");
             ReplacePositiveElementsWithZero(arr);
             PrintArray(arr);
 

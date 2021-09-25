@@ -65,7 +65,21 @@ namespace Task1
 
         public static int[] SortAndGetMinAndMaxValues(int[] arr, out int min, out int max)
         {
-            QuickSort(arr, 0, ARRLEN);
+            //QuickSort(arr, 0, ARRLEN);
+
+            int bubble;
+            for (int i = 0; i < ARRLEN - 1; i++)
+            {
+                for (int j = 0; j < ARRLEN - 1; j++)
+                {
+                    if (arr[j] > arr[j + 1])
+                    {
+                        bubble = arr[j + 1];
+                        arr[j + 1] = arr[j];
+                        arr[j] = bubble;
+                    }
+                }
+            }
 
             min = arr[0];
             max = arr[ARRLEN - 1];
