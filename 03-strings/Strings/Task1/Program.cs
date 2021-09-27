@@ -59,7 +59,7 @@ namespace Test1
                 wordLen += st.Length;
             }
 
-            Console.WriteLine($"Средняя длина слова: {(double)wordLen / (quantityOfSpaces + 1)}");
+            Console.WriteLine((double)wordLen / (quantityOfSpaces + 1));
 
 
         }

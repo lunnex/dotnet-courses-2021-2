@@ -45,7 +45,7 @@ namespace Task2
 
             String finalStr = new String(finalChar);
 
-            Console.WriteLine(finalStr);
+            Console.WriteLine("Результат замены: " + finalStr);
 
         }
     }
