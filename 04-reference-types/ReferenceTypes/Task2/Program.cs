@@ -12,6 +12,13 @@ namespace Task2
         private double _square;
         Exception e = new ArgumentException();
 
+        public Circle(int radius, int x, int y)
+        {
+            Radius = radius;
+            X = x;
+            Y = y;
+        }
+
         int Radius
         {
             get
@@ -20,7 +27,7 @@ namespace Task2
             }
             set
             {
-                if (_radius > 0)
+                if (value > 0)
                 {
                     _radius = value;
                 }
@@ -69,13 +76,6 @@ namespace Task2
             {
                 return Math.PI * Math.Pow(_radius, 2);
             }
-        }
-
-        public Circle(int radius, int x, int y)
-        {
-            Radius = radius;
-            X = x;
-            Y = y;
         }
 
     }

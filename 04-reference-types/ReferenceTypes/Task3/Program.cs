@@ -32,7 +32,7 @@ namespace Task3
             return _a + _b + _c;
         }
 
-        public double getArea()
+        public double GetArea()
         {
             return (Math.Sqrt(((double)GetPerimeter() / 2) * ((double)GetPerimeter() / 2 - _a) * ((double)GetPerimeter() / 2 - _b) * ((double)GetPerimeter() / 2 - _c)));
         }
@@ -59,10 +59,10 @@ namespace Task3
     {
         static void Main(string[] args)
         {
-            Triangle triangle = new Triangle(1, 5, 1);
+            Triangle triangle = new Triangle(7, 5, 9);
 
             Console.WriteLine(triangle.GetPerimeter());
-            Console.WriteLine(triangle.getArea());
+            Console.WriteLine(triangle.GetArea());
         }
     }
 }
