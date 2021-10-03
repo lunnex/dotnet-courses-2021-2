@@ -7,10 +7,11 @@ namespace Task5
     {
         static void Main(string[] args)
         {
-            Regex regex = new Regex(@"[<]\W*\w*[>]|[<]\S*\s\w*\W*\w*\W[>]");
+            Regex regex = new Regex(@"<.*?>");
             String input = Console.ReadLine();
             input = regex.Replace(input, "_");
             Console.WriteLine("Результат замены: " + input);
+            // <div a=""><span>
         }
     }
 }

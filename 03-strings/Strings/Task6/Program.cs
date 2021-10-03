@@ -7,8 +7,8 @@ namespace Task6
     {
         static void Main(string[] args)
         {
-            Regex regularNumber = new Regex(@"(\d+\.\d*)|(\d+)|([-]\d+\.\d+)");
-            Regex sienceNumber = new Regex(@"(\d+\.\d+[e]\d+)|([-]\d+\.\d+[e]\d+)");
+            Regex regularNumber = new Regex(@"^((\d+\.\d*)|([+-]?\d+)|([-+]\d+\.\d+))$");
+            Regex sienceNumber = new Regex(@"^(([+-]?\d+\.?\d*e[+-]?\d+))$");
 
             String input = Console.ReadLine();
 

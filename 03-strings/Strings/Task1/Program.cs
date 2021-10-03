@@ -46,8 +46,7 @@ namespace Test1
             quantityOfSpaces = SpaceCounter(chars);
             String s = new String(chars);
 
-            String[] strings = new String[quantityOfSpaces];
-            strings = s.Split(" ");
+            String[] strings = s.Split(" ");
 
             for (int i = 0; i < strings.Length; i++)
             {

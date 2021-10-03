@@ -9,7 +9,6 @@ namespace Task2
         static void Main(string[] args)
         {
             List<char> arrList = new List<char>();
-            int count = 0;
 
             Console.Write("Введите первую строку: ");
             String s1 = Console.ReadLine();
@@ -28,23 +27,12 @@ namespace Task2
                         arrList.Add(c1[i]);
                         break;
                     }
-                    else { }
-                    
                 }
+
                 arrList.Add(c1[i]);
-
             }
 
-            char[] finalChar = new char[arrList.Count];
-
-            foreach(var arrCont in arrList)
-            {
-                finalChar[count] = arrList[count];
-                count++;
-            }
-
-            String finalStr = new String(finalChar);
-
+            String finalStr = new String(arrList.ToArray());
             Console.WriteLine(finalStr);
 
         }

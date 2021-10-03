@@ -12,7 +12,7 @@ namespace Task4
             Stopwatch timer2 = new Stopwatch();
             string str = "";
             StringBuilder sb = new StringBuilder();
-            int N = 100000;
+            int N = 1000;
 
             timer1.Start();
             for (int i = 0; i < N; i++)
@@ -28,8 +28,8 @@ namespace Task4
             }
             timer2.Stop();
 
-            Console.WriteLine("String: " + timer1.ElapsedMilliseconds);
-            Console.WriteLine("StringBuilder: " + timer2.ElapsedMilliseconds);
+            Console.WriteLine("String: " + timer1.Elapsed.TotalMilliseconds);
+            Console.WriteLine("StringBuilder: " + timer2.Elapsed.TotalMilliseconds);
         }
     }
 }

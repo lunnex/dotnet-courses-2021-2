@@ -42,8 +42,8 @@ namespace Task3
 
         static void Main(string[] args)
         {
-            int[] arr = new int[ARRLEN];
-            arr = GenerateArray();
+            int[] arr = GenerateArray();
+           // arr = GenerateArray();
             PrintArray(arr);
             Console.WriteLine($"Сумма неотрицательных элементов: {GetSumOfNonNegativeElements(arr)}");
         }
