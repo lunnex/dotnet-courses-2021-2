@@ -63,7 +63,7 @@ namespace Task1
             get { return _secondName; }
             set
             {
-                if (value.Length > 0)
+                if (value.Length < 0)
                 {
                     throw e;
                 }
@@ -102,21 +102,11 @@ namespace Task1
     {
         static void Main(string[] args)
         {
-            Console.Write("Введите имя: ");
-            string name = Console.ReadLine();
 
-            Console.Write("Введите фамилию: ");
-            string secondName = Console.ReadLine();
+            DateTime dateOfBirth = DateTime.Parse("02/08/2001");
 
-            Console.Write("Введите отчество: ");
-            string patronymic = Console.ReadLine();
 
-            Console.Write("Введите дату рождения: ");
-            String strDateOfBirth = Console.ReadLine();
-
-            DateTime dateOfBirth = DateTime.Parse(strDateOfBirth);
-
-            User user = new User(name, secondName, patronymic, dateOfBirth);
+            User user = new User("name", "surName", "patr", dateOfBirth);
             Console.WriteLine(user.Age);
         }
     }
