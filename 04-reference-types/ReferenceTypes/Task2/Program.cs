@@ -10,7 +10,7 @@ namespace Task2
         private int _y;
         private double _len;
         private double _square;
-
+        Exception e = new ArgumentException();
 
         int Radius
         {
