@@ -38,29 +38,10 @@ namespace Task2
             }
         }
 
-        int X
-        {
-            get
-            {
-                return (_x);
-            }
-            set
-            {
-                _x = value;
-            }
-        }
+        int X{ get; set; }
 
-        int Y
-        {
-            get
-            {
-                return (_y);
-            }
-            set
-            {
-                _y = value;
-            }
-        }
+
+        int Y { get; set; }
 
         public double Circumference
         {
@@ -84,7 +65,7 @@ namespace Task2
     {
         static void Main(string[] args)
         {
-            Circle circle = new Circle(1, 0, 0);
+            Circle circle = new Circle(-1, 0, 0);
             Console.WriteLine(circle.Circumference);
             Console.WriteLine(circle.Area);
         }

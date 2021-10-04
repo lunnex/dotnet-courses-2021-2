@@ -23,6 +23,7 @@ namespace Task4
 
         public MyString (char[] s)
         {
+            string str = new string(s);
             value = new char[s.Length];
             for (int i = 0; i < value.Length; i++)
             {
@@ -66,6 +67,9 @@ namespace Task4
             return flag;
         }
 
+
+        //TODO Переопределить Equals
+
         public static bool operator != (MyString firstStr, MyString secondStr)
         {
             bool flag = false;
@@ -84,6 +88,34 @@ namespace Task4
             else
             {
                 flag = true;
+            }
+            return flag;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            bool flag = true;
+
+            if (obj == null)
+            {
+                flag = false;
+            }
+
+            MyString ms = obj as MyString;
+
+            if (this.value.Length == ms.value.Length)
+            {
+                for (int i = 0; i < this.value.Length; i++)
+                {
+                    if (this.value[i] != ms.value[i])
+                    {
+                        flag = false;
+                    }
+                }
+            }
+            else
+            {
+                flag = false;
             }
             return flag;
         }
@@ -112,6 +144,7 @@ namespace Task4
 
         public static string ToString(MyString myString)
         {
+
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < myString.value.Length; i++)
             {
@@ -126,12 +159,14 @@ namespace Task4
     {
         static void Main(string[] args)
         {
+            char[] ch = new char[5] { 'q', 'e', 'd', 'f', 'u'};
             MyString ms = new MyString("ffff");
             MyString ms2 = new MyString("ffff");
             MyString ms1 = new MyString("dafdaffar");
+            MyString ms3 = new MyString(ch);
             MyString ns = new MyString();
             ms1 = ms1 - "daf";
-            Console.WriteLine(MyString.ToString(ms2));
+            Console.WriteLine(MyString.ToString(ms1));
             ms1 = ms1 + "daf";
             Console.WriteLine(MyString.ToString(ms1));
 
@@ -141,6 +176,11 @@ namespace Task4
             Console.WriteLine(ms2 == ms);
             string str = MyString.ToString(ms2);
             Console.WriteLine(str);
+            Console.WriteLine(MyString.ToString(ms3));
+
+            Console.WriteLine(ms3.Equals(ms));
+            Console.WriteLine(ms.Equals(ms2));
+
 
         }
     }

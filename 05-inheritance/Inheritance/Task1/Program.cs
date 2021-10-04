@@ -4,6 +4,7 @@ namespace Task1
 {
     class User
     {
+        Exception e = new ArgumentException();
         private string _firstName = "";
         private string _secondName = "";
         private string _patronymic = "";
@@ -11,8 +12,8 @@ namespace Task1
 
         public int Age
         {
-            get { return (int)(DateTime.Now.Subtract(dateOfBirth).Days/365.2425); }
-            
+            get { return (int)(DateTime.Now.Subtract(dateOfBirth).Days / 365.2425); }
+
         }
 
         public string FirstName
@@ -75,9 +76,6 @@ namespace Task1
             }
         }
 
-
-        Exception e = new ArgumentException();
-
         public User(string firstName, string secondName, string patronymic, DateTime dateOfBirth)
         {
             FirstName = firstName;
@@ -85,20 +83,57 @@ namespace Task1
             Patronymic = patronymic;
             DateOfBirth = dateOfBirth;
         }
-
-        
     }
+
+    class Employee : User
+    {
+        Exception e = new ArgumentException();
+        private DateTime _dateOfRecruting;
+        
+        public DateTime DateOfRecruting
+        {
+            get { return _dateOfRecruting; }
+            set
+            {
+                if (value < DateTime.Today && value > DateOfBirth)
+                {
+                    _dateOfRecruting = value;
+                }
+                else
+                {
+                    throw e;
+                }
+            }
+        }
+
+        public int Experience
+        {
+            get { return (int)((DateTime.Today.Subtract(_dateOfRecruting)).Days / 365.2425); }
+        }
+
+        public string Title { get; set; }
+
+
+        public Employee(string firstName, string secondName, string patronymic, DateTime dateOfBirth, DateTime dateOfRecruting, string title) : base (firstName, secondName, patronymic, dateOfBirth)
+        {
+            FirstName = firstName;
+            SecondName = secondName;
+            Patronymic = patronymic;
+            DateOfBirth = dateOfBirth;
+            DateOfRecruting = dateOfRecruting;
+            Title = title;
+        }
+    }
+
 
     class Program
     {
         static void Main(string[] args)
         {
+            DateTime db = DateTime.Parse("09.09.1970");
+            DateTime dr = DateTime.Parse("09.09.1992");
+            Employee empl = new Employee("name", "sname", "patr", db, dr, "Тестировщик");
 
-            DateTime dateOfBirth = DateTime.Parse("03/10/2021");
-
-
-            User user = new User("name", "surName", "patr", dateOfBirth);
-            Console.WriteLine(user.Age);
         }
     }
 }
