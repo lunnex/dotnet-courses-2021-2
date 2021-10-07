@@ -130,7 +130,7 @@ namespace Task1
 
     class AuxiliaryClass1 : AuxiliaryClass
     {
-        public override void print()
+        public override void Print()
         {
             Console.WriteLine("aaaa");
         }
