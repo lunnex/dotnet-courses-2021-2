@@ -101,7 +101,7 @@ namespace Task1
                 }
                 else
                 {
-                    throw e;
+                    throw new ArgumentException();
                 }
             }
         }

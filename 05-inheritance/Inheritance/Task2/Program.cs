@@ -87,7 +87,7 @@ namespace Task2
             }
         }
 
-        public virtual double Area
+        public override double Area
         {
             get
             {

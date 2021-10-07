@@ -21,13 +21,13 @@ namespace Task4
             }
         }
 
-        public MyString (char[] s)
+        public MyString (char[] charArr)
         {
-            string str = new string(s);
-            value = new char[s.Length];
+            string str = new string(charArr);
+            value = new char[charArr.Length];
             for (int i = 0; i < value.Length; i++)
             {
-                value[i] = s[i];
+                value[i] = charArr[i];
             }
         }
 
