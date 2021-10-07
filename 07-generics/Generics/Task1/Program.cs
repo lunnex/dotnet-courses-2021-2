@@ -122,18 +122,12 @@ namespace Task1
 
     class AuxiliaryClass
     {
-        public virtual void print()
-        {
-            Console.WriteLine("ddddd");
-        }
+
     }
 
     class AuxiliaryClass1 : AuxiliaryClass
     {
-        public override void Print()
-        {
-            Console.WriteLine("aaaa");
-        }
+
     }
 
     class Program
