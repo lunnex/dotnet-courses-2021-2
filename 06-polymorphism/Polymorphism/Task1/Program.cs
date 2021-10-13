@@ -6,11 +6,17 @@ namespace Task1
     {
         public int X { get; set; }
         public int Y { get; set; }
-        public Exception e = new Exception();
+        public Figure (int x, int y)
+        {
+            X = x;
+            Y = y;
+        }
+
+        //public Exception e = new Exception();
         public abstract void Draw();
     }
 
-    class Rectangle : Figure
+    class Triangle : Figure
     {
         private int _a = 0, _b = 0, _c = 0;
         
@@ -19,19 +25,17 @@ namespace Task1
             Console.WriteLine("Rectangle " + _a + " " + _b + " " + _c);
         }
 
-        public Rectangle(int x, int y, int a, int b, int c)
+        public Triangle(int x, int y, int a, int b, int c) : base (x,y)
         {
             if ((a + b) > c && (b + c) > a && (a + c) > b && a > 0 && b > 0 && c > 0)
             {
-                X = x;
-                Y = y;
                 _a = a;
                 _b = b;
                 _c = c;
             }
             else
             {
-                throw e;
+                throw new Exception();
             }
         }
     }
@@ -44,13 +48,13 @@ namespace Task1
             Console.WriteLine("Circle: " + _radius);
         }
 
-        public Circle(int x, int y, int radius)
+        public Circle(int x, int y, int radius) : base(x, y)
         {
             if (radius > 0)
             {
                 _radius = radius;
             }
-            else throw e;
+            else throw new Exception();
         }
 
     }
@@ -64,10 +68,8 @@ namespace Task1
             Console.WriteLine("Line: X Начало : " + X + " Y Начало : " + Y + " X Конец : " + X1 + " Y Конец : " + Y1 );
         }
 
-        public Line(int x, int y, int x1, int y1)
+        public Line(int x, int y, int x1, int y1) : base(x, y)
         {
-            X = x;
-            Y = y;
             X1 = x1;
             Y1 = y1;
         }
@@ -75,40 +77,38 @@ namespace Task1
 
     class Round : Figure
     {
-        private int _radius = 0;
+        public int Radius = 0;
         public override void Draw()
         {
-            Console.WriteLine("Round: Радиус: " + _radius + "Площадь: " + Math.PI * Math.Pow(_radius, 2));
+            Console.WriteLine("Round: Радиус: " + Radius + "Площадь: " + Math.PI * Math.Pow(Radius, 2));
         }
 
-        public Round(int x, int y, int radius)
+        public Round(int x, int y, int radius) : base(x, y)
         {
             if (radius > 0)
             {
-                _radius = radius;
+                Radius = radius;
             }
-            else throw e;
+            else throw new Exception();
         }
     }
 
-    class Ring : Figure
+    class Ring : Round
     {
-        private int _radius = 0;
         private int _innerRadius = 0;
 
         public override void Draw()
         {
-            Console.WriteLine("Ring: " + "Radius: " + _radius + " Inner radius: " + _innerRadius);
+            Console.WriteLine("Ring: " + "Radius: " + Radius + " Inner radius: " + _innerRadius);
         }
 
-        public Ring(int x, int y, int radius, int innerRadius)
+        public Ring(int x, int y, int radius, int innerRadius) : base(x, y, radius)
         {
             if ((radius > 0) && (innerRadius < radius))
             {
-                _radius = radius;
                 _innerRadius = innerRadius;
             }
-            else throw e;
+            else throw new Exception();
         }
 
     }
@@ -117,7 +117,7 @@ namespace Task1
     {
         static void Main(string[] args)
         {
-            Figure[] figures = { new Rectangle(0, 0, 3, 4, 5), new Circle(0, 0, 5), new Line(0, 0, 1, 1), new Round(0, 0, 1), new Ring(0, 0, 7, 5) };
+            Figure[] figures = { new Triangle(0, 0, 3, 4, 5), new Circle(0, 0, 5), new Line(0, 0, 1, 1), new Round(0, 0, 1), new Ring(0, 0, 7, 5) };
 
 
             for (int i = 0; i < figures.Length; i++)

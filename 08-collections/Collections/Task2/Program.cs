@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
-namespace Task1
+namespace Task2
 {
-    class DynamicArray<T> where T : new()
+    class DynamicArray<T> : IEnumerable<T> where T : new()
     {
         private T[] array;
+        private DynamicArray<T> _dynamicArray;
+        private int index;
+
         public DynamicArray()
         {
             array = new T[8];
@@ -22,6 +27,26 @@ namespace Task1
             array = new T[input.Length];
             Array.Copy(array, input, input.Length);
             Length = input.Length;
+        }
+
+        public DynamicArray(IEnumerable<T> enumerable)
+        {
+            int size = 0;
+            IEnumerator enumerator = enumerable.GetEnumerator();
+            while (enumerator.MoveNext())
+            {
+                size++;
+            }
+            enumerator.Reset();
+
+            array = new T[size];
+
+            for (int i = 0; i < size; i++)
+            {
+                enumerator.MoveNext();
+                array[i] = (T)enumerator.Current;
+            }
+
         }
 
         public int Length { get; set; }
@@ -118,15 +143,34 @@ namespace Task1
                 array[i] = value;
             }
         }
-    }
 
-    class AuxiliaryClass
-    {
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
 
-    }
+        public IEnumerator<T> GetEnumerator()
+        {
+            foreach (T item in array)
+            {
+                yield return item;
+            }
+        }
 
-    class AuxiliaryClass1 : AuxiliaryClass
-    {
+        public void Reset()
+        {
+            index = -1;
+        }
+
+        public void MoveNext()
+        {
+            index++;
+        }
+
+        public void Dispose()
+        {
+            GC.SuppressFinalize(this);
+        }
 
     }
 
@@ -134,22 +178,22 @@ namespace Task1
     {
         static void Main(string[] args)
         {
-            DynamicArray<AuxiliaryClass> dArr = new DynamicArray<AuxiliaryClass>();
-            AuxiliaryClass[] clArr = new AuxiliaryClass[7] { new AuxiliaryClass(), new AuxiliaryClass(), new AuxiliaryClass(), new AuxiliaryClass(), new AuxiliaryClass(), new AuxiliaryClass(), new AuxiliaryClass() };
-            AuxiliaryClass1 cl = new AuxiliaryClass1();
-            AuxiliaryClass1 cl1 = new AuxiliaryClass1();
-            AuxiliaryClass1 cl2 = new AuxiliaryClass1();
-            AuxiliaryClass1 cl3 = new AuxiliaryClass1();
-            dArr.AddRange(clArr);
-            dArr.Insert(cl, 0);
-            Console.WriteLine(dArr[0]);
-            dArr.Insert(cl1, 3);
-            Console.WriteLine(dArr[3]);
-            dArr.Insert(cl2, dArr.Length);
-            Console.WriteLine(dArr[dArr.Length - 1]);
-            dArr.Remove(cl1);
-            Console.WriteLine(dArr[3]);
-            //dArr.Remove(cl3);
+            List<int> list = new List<int>();
+            list.Add(0);
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list.Add(4);
+            list.Add(5);
+
+            DynamicArray<int> dymamicArray = new DynamicArray<int>(list);
+
+            foreach(int i in dymamicArray)
+            {
+                Console.WriteLine(i);
+            }
+
         }
     }
 }
+

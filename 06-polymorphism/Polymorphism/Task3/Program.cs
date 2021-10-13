@@ -24,8 +24,7 @@ namespace Task3
     {
         double start, step;
         int currentIndex;
-        public List<double> listOfValues = new List<double>();
-
+        
         public ArithmeticProgression(double start, double step)
         {
             this.start = start;
@@ -36,7 +35,7 @@ namespace Task3
 
         public double GetCurrent()
         {
-            listOfValues.Add( start + step * currentIndex);
+ 
             return start + step * currentIndex;
         }
 
@@ -48,13 +47,13 @@ namespace Task3
 
         public void Reset()
         {
-            listOfValues.Clear();
+
             currentIndex = 1;
         }
 
         public double this[int index]
 		{
-			get { return listOfValues[index]; }
+			get { return start + index * currentIndex; }
 		}
     }
 
@@ -95,21 +94,19 @@ namespace Task3
     {
         public static void PrintSeries(ISeries series, int i)
         {
+            series.Reset();
             for (int j = 0; j < i; j++)
-            {
-                
+            {   
                 Console.WriteLine(series.GetCurrent());
                 series.MoveNext();
             }
         }
 
-        public static void PrintIndexable(IIndexableSeries series, int i)
+        public static void PrintIndexable(IIndexable series, int i)
         {
-            
             for (int j = 0; j < i; j++)
             {
-                series.MoveNext();
-                Console.WriteLine(series.GetCurrent());
+                Console.WriteLine(series[j]);
             }
         }
 

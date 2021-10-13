@@ -11,44 +11,79 @@ namespace Task4
         public void Stop();
     }
 
-    class Hero : IMoveable
+    abstract class GameObject
+    {
+        public float Xpos;
+        public float Ypos;
+
+        public GameObject(int x, int y)
+        {
+            Xpos = x;
+            Ypos = y;
+        }
+    }
+
+     abstract class Hero : GameObject , IMoveable
     {
         public float speedOfWalking { get; set; }
         public float speedOfRunning { get; set; }
-        public float posX { get; set; }
-        public float posY { get; set; }
+
         public float healthPoints { get; set; }
         public void Birth() { }
         public void Death() { }
-        public virtual void Walk() { }
-        public virtual void Run() { }
-        public virtual void Teleportation() { }
+        public abstract void Walk();
+        public abstract void Run();
+        public abstract void Teleportation();
         public void Stop() { }
+
+        public Hero (int x, int y): base (x, y)
+        {
+
+        }
     }
 
-    class Enemy : Hero
+    abstract class Enemy : Hero
     {
         public void FindPlayer() { }
-        public override void Run() { }
-        public override void Walk() { }
-        public override void Teleportation() { }
         public void BypassingObstacles() { }
+        public Enemy(int x, int y) : base (x,y)
+        {
+
+        }
 
     }
 
     class Wolf : Enemy
     {
+        public override void Walk() { }
+        public override  void Run() { }
+        public override void Teleportation() { }
+        public Wolf(int x, int y) : base(x, y)
+        {
 
+        }
     }
 
     class Bear : Enemy
     {
+        public override void Walk() { }
+        public override void Run() { }
+        public override void Teleportation() { }
+        public Bear(int x, int y) : base(x, y)
+        {
 
+        }
     }
 
     class ClawofTheDeath : Enemy
     {
+        public override void Walk() { }
+        public override void Run() { }
+        public override void Teleportation() { }
+        public ClawofTheDeath(int x, int y) : base(x, y)
+        {
 
+        }
     }
 
 
@@ -57,41 +92,65 @@ namespace Task4
         public override void Run() { }
         public override void Walk() { }
         public override void Teleportation() { }
+        public Player(int x, int y) : base(x, y)
+        {
+
+        }
     }
 
 
-    class Bonus
+    class Bonus: GameObject
     {
         public void Appearance() { }
         public void Disppearance() { }
+        public Bonus(int x, int y) : base(x, y)
+        {
+
+        }
     }
 
     class Apple : Bonus
     {
+        public Apple(int x, int y) : base(x, y)
+        {
 
+        }
     }
 
     class Cherry : Bonus
     {
+        public Cherry(int x, int y) : base(x, y)
+        {
 
+        }
     }
 
 
-    class Obstacle
+    class Obstacle : GameObject
     {
-        public float posX { get; set; }
-        public float posY { get; set; }
+        public float PosX { get; set; }
+        public float PosY { get; set; }
         public void Appearance() { }
+        public Obstacle(int x, int y) : base(x, y)
+        {
+
+        }
     }
 
     class Tree : Obstacle
     {
+        public Tree(int x, int y) : base(x, y)
+        {
 
+        }
     }
 
     class Stone : Obstacle
     {
+        public Stone(int x, int y) : base(x, y)
+        {
 
+        }
     }
 
     class Field

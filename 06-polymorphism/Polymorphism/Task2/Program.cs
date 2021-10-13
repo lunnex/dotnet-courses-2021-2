@@ -44,8 +44,10 @@ namespace Task2
     {
         public static void PrintSeries(ISeries series, int i)
         {
+            series.Reset();
             for (int j = 0; j < i; j++)
             {
+                
                 series.MoveNext();
                 Console.WriteLine(series.GetCurrent());
             }
@@ -54,6 +56,8 @@ namespace Task2
         static void Main(string[] args)
         {
             GeometricProgression gp = new GeometricProgression(2, 2);
+            PrintSeries(gp, 6);
+            
             PrintSeries(gp, 6);
         }
     }
