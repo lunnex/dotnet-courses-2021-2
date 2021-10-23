@@ -151,10 +151,12 @@ namespace Task2
 
         public IEnumerator<T> GetEnumerator()
         {
-            foreach (T item in array)
+            for (int i = 0; i < array.Length; i++)
             {
-                yield return item;
+                MoveNext();
+                yield return array[index];
             }
+            Reset();
         }
 
         public void Reset()
@@ -162,8 +164,9 @@ namespace Task2
             index = -1;
         }
 
-        public void MoveNext()
+        public bool MoveNext()
         {
+            if (array[index])
             index++;
         }
 

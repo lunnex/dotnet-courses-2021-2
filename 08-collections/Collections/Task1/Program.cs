@@ -8,7 +8,7 @@ namespace Task1
 {
     class Program
     {
-        static void RemoveEachSecondItem<T>(ICollection<T> l) where T: new()
+        static void RemoveEachSecondItem<T>(ICollection<T> l)
         {
             int i = 0;
             IEnumerator enumerator = l.GetEnumerator();

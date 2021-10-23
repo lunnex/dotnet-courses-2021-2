@@ -12,6 +12,7 @@ namespace Task3
 
             int value = 0;
             
+
                 
             if (!dictionary.ContainsKey(str))
             {
