@@ -166,8 +166,12 @@ namespace Task2
 
         public bool MoveNext()
         {
-            if (array[index])
-            index++;
+            if (index < array.Length)
+            {
+                index++;
+                return true;
+            }
+            else return false;
         }
 
         public void Dispose()
