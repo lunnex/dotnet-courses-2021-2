@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="watchable-folder - Копировать\**" />
+    <EmbeddedResource Remove="watchable-folder - Копировать\**" />
+    <None Remove="watchable-folder - Копировать\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="watchable\" />
+  </ItemGroup>
+
+</Project>

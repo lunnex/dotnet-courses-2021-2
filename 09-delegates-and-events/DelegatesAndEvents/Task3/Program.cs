@@ -5,7 +5,10 @@ namespace Task3
 {
     class Program
     {
-        public static void Sort(string[] arr, Comparation comparation, Action callback)
+
+       
+
+        public static void Sort(string[] arr, Comparation comparation)
         {
             bool flag = false;
             while (flag == false)
@@ -19,17 +22,21 @@ namespace Task3
                         arr[i - 1] = arr[i];
                         arr[i] = allux;
                         flag = false;
+                        
                         break;
                     }
                 }
             }
-            callback();
+            onSort("Сортировка окончена");
         }
+
+        //TOOO: Нужно добавить событие в класс program; нужно создать метод, который принимает string и выводит на консоль сообщение; Подписать этот метод на событие в Main; В синхронном методе вызывать это событие
+        //TODO: Нужно запускать поток в SortAsync и после этого запускать поток
 
         public static Thread SortAsync(string[] arr, Comparation comparation)
         {
-            Action callback = () => OnEndOfSort(arr);
-            Thread thread = new Thread(() => Sort(arr, comparation, callback));
+            Thread thread = new Thread(() => Sort(arr, comparation));
+            thread.Start();
             return thread;
         }
 
@@ -71,15 +78,27 @@ namespace Task3
         }
 
         public delegate int Comparation(string str1, string str2);
+         static Action<string> onSort;
+
+        public static void ReturnStr(string str)
+        {
+            Console.WriteLine(str);
+        }
 
         static void Main(string[] args)
         {
             Comparation comparation = new Comparation(CompareStrings);
             string[] strArr = new string[] { "ac", "abc", "ab", "a" };
+            onSort += ReturnStr;
 
             Thread thread = SortAsync(strArr, comparation);
+            thread.Join();
 
-            thread.Start();
+            foreach(string arr in strArr)
+            {
+                Console.WriteLine(arr);
+            }
+
         }
     }
 }

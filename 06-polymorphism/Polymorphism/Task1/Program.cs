@@ -12,7 +12,6 @@ namespace Task1
             Y = y;
         }
 
-        //public Exception e = new Exception();
         public abstract void Draw();
     }
 

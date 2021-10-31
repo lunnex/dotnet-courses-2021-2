@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Task3
 {
@@ -29,7 +28,7 @@ namespace Task3
         {
             this.start = start;
             this.step = step;
-            this.currentIndex = 1;
+            this.currentIndex = 0;
             
         }
 
@@ -48,7 +47,7 @@ namespace Task3
         public void Reset()
         {
 
-            currentIndex = 1;
+            currentIndex = 0;
         }
 
         public double this[int index]
@@ -122,7 +121,7 @@ namespace Task3
             int counter = 0;
             while (counter < 6)
             {
-                doubleSeries[counter] = ap[counter];
+                doubleSeries[counter] = counter;
                 
                 counter++;
             }

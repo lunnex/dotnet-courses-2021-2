@@ -33,7 +33,7 @@ namespace Task2
 
         public void Reset()
         {
-            index = 1;
+            index = -1;
         }
 
 
@@ -58,7 +58,6 @@ namespace Task2
             GeometricProgression gp = new GeometricProgression(2, 2);
             PrintSeries(gp, 6);
             
-            PrintSeries(gp, 6);
         }
     }
 }
