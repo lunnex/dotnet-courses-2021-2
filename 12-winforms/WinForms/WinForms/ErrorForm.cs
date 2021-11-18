@@ -12,6 +12,7 @@ namespace WinForms
     {
         User user;
         Prize prize;
+        Data data;
 
         public ErrorForm(string labelText)
         {
@@ -19,9 +20,10 @@ namespace WinForms
             ErrorText.Text = labelText;
         }
 
-        public ErrorForm(string labelText, User user)
+        public ErrorForm(string labelText, User user, Data data)
         {
             InitializeComponent();
+            this.data = data;
             this.user = user;
             ErrorText.Text = labelText;
         }
@@ -37,12 +39,12 @@ namespace WinForms
         {
             if (this.user != null)
             {
-                Data.users.Remove(user);
+                data.users.Remove(user);
             }
 
             if (this.prize != null)
             {
-                Data.prizes.Remove(prize);
+                data.prizes.Remove(prize);
             }
             Close();
         }

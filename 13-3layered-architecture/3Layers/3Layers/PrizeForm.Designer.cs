@@ -91,8 +91,6 @@ namespace WinForms
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxOfDescription);
             this.Controls.Add(this.textBoxNameOfPrize);
-            this.MaximumSize = new System.Drawing.Size(300, 262);
-            this.MinimumSize = new System.Drawing.Size(300, 262);
             this.Name = "PrizeForm";
             this.Text = "PrizeForm";
             this.ResumeLayout(false);

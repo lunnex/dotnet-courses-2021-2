@@ -61,8 +61,6 @@ namespace WinForms
             this.ClientSize = new System.Drawing.Size(492, 160);
             this.Controls.Add(this.OKbtn);
             this.Controls.Add(this.ErrorText);
-            this.MaximumSize = new System.Drawing.Size(508, 199);
-            this.MinimumSize = new System.Drawing.Size(508, 199);
             this.Name = "ErrorForm";
             this.Text = "ErrorForm";
             this.ResumeLayout(false);

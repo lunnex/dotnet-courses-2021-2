@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Entities;
+using Interfaces;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,20 +13,23 @@ using System.Windows.Forms;
 
 namespace WinForms
 {
-    
     public partial class MainForm : Form
     {
+        private readonly IPrizeBL _prizeBL;
+        private readonly IUserBL _userBL;
+
         private BindingList<User> _bindingListUser;
         private BindingList<Prize> _bindingListPrize;
         private bool _userPageIsActive = false;
         private bool _prizePageIsActive = false;
-        private readonly Data data;
-        public MainForm()
+        public MainForm(IPrizeBL prizeBL, IUserBL userBL)
         {
             InitializeComponent();
-            data = new Data();
+            _prizeBL = prizeBL;
+            _userBL = userBL;
+
             _userPageIsActive = true;
-            _bindingListUser = new BindingList<User>(data.users);
+            _bindingListUser = new BindingList<User>(_userBL.GetAll());
             dataGridView.DataSource = _bindingListUser;
             dataGridView.AllowUserToAddRows = false;
             dataGridView.AllowUserToDeleteRows = false;
@@ -41,7 +46,7 @@ namespace WinForms
 
         private void addUserBtn_Click(object sender, EventArgs e)
         {
-            var addUserForm = new UserForm(data);
+            var addUserForm = new UserForm(_prizeBL, _userBL);
             addUserForm.ShowDialog();
             _bindingListUser.ResetBindings();
         }
@@ -52,7 +57,7 @@ namespace WinForms
             {
                 User user = (User)dataGridView.SelectedCells[0].OwningRow.DataBoundItem;
 
-                var form = new UserForm(user, data);
+                var form = new UserForm(user, _prizeBL,_userBL);
                 form.ShowDialog();
                 _bindingListUser.ResetBindings();
             }
@@ -63,10 +68,9 @@ namespace WinForms
             if (dataGridView.SelectedCells.Count > 0)
             {
                 User user = (User)dataGridView.SelectedCells[0].OwningRow.DataBoundItem;
-                var warningForm = new ErrorForm("The information about this user will be deleted!", user, data);
+                var warningForm = new ErrorForm("The information about this user will be deleted!", user, _prizeBL, _userBL);
                 warningForm.ShowDialog();
                 _bindingListUser.ResetBindings();
-
             }
         }
 
@@ -77,33 +81,33 @@ namespace WinForms
                 IList<User> allux = new List<User>();
                 if (e.ColumnIndex == 0)
                 {
-                    allux = data.users.OrderBy(user => user.ID).ToList();
+                    allux = _userBL.GetAll().OrderBy(user => user.ID).ToList();
                 }
                 else if (e.ColumnIndex == 1)
                 {
-                    allux = data.users.OrderBy(user => user.FirstName).ToList();
+                    allux = _userBL.GetAll().OrderBy(user => user.FirstName).ToList();
                 }
                 else if (e.ColumnIndex == 2)
                 {
-                    allux = data.users.OrderBy(user => user.LastName).ToList();
+                    allux = _userBL.GetAll().OrderBy(user => user.LastName).ToList();
                 }
                 else if (e.ColumnIndex == 3)
                 {
-                    allux = data.users.OrderBy(user => user.DateOfBirth).ToList();
+                    allux = _userBL.GetAll().OrderBy(user => user.DateOfBirth).ToList();
                 }
                 else if (e.ColumnIndex == 4)
                 {
-                    allux = data.users.OrderBy(user => user.Age).ToList();
+                    allux = _userBL.GetAll().OrderBy(user => user.Age).ToList();
                 }
                 else if (e.ColumnIndex == 5)
                 {
-                    allux = data.users.OrderBy(user => user.PrizeStr).ToList();
+                    allux = _userBL.GetAll().OrderBy(user => user.PrizeStr).ToList();
                 }
-                data.users.Clear();
+                _userBL.Clear();
 
                 for (int i = 0; i < allux.Count; i++)
                 {
-                    data.users.Add(allux[i]);
+                    _userBL.Add(allux[i]);
                 }
                 _bindingListUser.ResetBindings();
             }
@@ -113,21 +117,21 @@ namespace WinForms
                 IList<Prize> allux = new List<Prize>();
                 if (e.ColumnIndex == 0)
                 {
-                    allux = data.prizes.OrderBy(prize => prize.ID).ToList();
+                    allux = _prizeBL.GetAll().OrderBy(prize => prize.ID).ToList();
                 }
                 else if (e.ColumnIndex == 1)
                 {
-                    allux = data.prizes.OrderBy(prize => prize.Title).ToList();
+                    allux = _prizeBL.GetAll().OrderBy(prize => prize.Title).ToList();
                 }
                 else if (e.ColumnIndex == 2)
                 {
-                    allux = data.prizes.OrderBy(prize => prize.Description).ToList();
+                    allux = _prizeBL.GetAll().OrderBy(prize => prize.Description).ToList();
                 }
-                data.prizes.Clear();
+                _prizeBL.Clear();
 
                 for (int i = 0; i < allux.Count; i++)
                 {
-                    data.prizes.Add(allux[i]);
+                    _prizeBL.Add(allux[i]);
                 }
                 _bindingListPrize.ResetBindings();
 
@@ -139,7 +143,7 @@ namespace WinForms
         {
             _prizePageIsActive = true;
             _userPageIsActive = false;
-            _bindingListPrize = new BindingList<Prize>(data.prizes);
+            _bindingListPrize = new BindingList<Prize>(_prizeBL.GetAll());
             dataGridView.DataSource = _bindingListPrize;
 
             addUserBtn.Visible = false;
@@ -155,7 +159,7 @@ namespace WinForms
         {
             _prizePageIsActive = false;
             _userPageIsActive = true;
-            _bindingListUser = new BindingList<User>(data.users);
+            _bindingListUser = new BindingList<User>(new List<User>(_userBL.GetAll()));
             dataGridView.DataSource = _bindingListUser;
 
             addUserBtn.Visible = true;
@@ -169,7 +173,7 @@ namespace WinForms
 
         private void addPrizeBtn_Click(object sender, EventArgs e)
         {
-            var addPrizeForm = new PrizeForm(data);
+            var addPrizeForm = new PrizeForm(_prizeBL, _userBL);
             
             addPrizeForm.ShowDialog();
             _bindingListPrize.ResetBindings();
@@ -181,7 +185,7 @@ namespace WinForms
             {
                 Prize prize = (Prize)dataGridView.SelectedCells[0].OwningRow.DataBoundItem;
 
-                var form = new PrizeForm(prize, data);
+                var form = new PrizeForm(prize, _prizeBL, _userBL);
                 form.ShowDialog();
                 _bindingListPrize.ResetBindings();
                 _bindingListUser.ResetBindings();
@@ -194,7 +198,7 @@ namespace WinForms
             if (dataGridView.SelectedCells.Count > 0)
             {
                 Prize prize = (Prize)dataGridView.SelectedCells[0].OwningRow.DataBoundItem;
-                var warningForm = new ErrorForm("The information about this prize will be deleted!", prize);
+                var warningForm = new ErrorForm("The information about this prize will be deleted!", prize, _prizeBL, _userBL);
                 warningForm.ShowDialog();
                 AgeementPrizesAndUsers();
                 _bindingListPrize.ResetBindings();
@@ -204,15 +208,15 @@ namespace WinForms
 
         public void AgeementPrizesAndUsers()
         {
-            string[] prizeNames = new string[data.prizes.Count];
-            for (int i = 0; i < data.prizes.Count; i++)
+            string[] prizeNames = new string[_prizeBL.GetAll().Count()];
+            for (int i = 0; i < _prizeBL.GetAll().Count(); i++)
             {
-                prizeNames[i] = data.prizes[i].Title;
+                prizeNames[i] = _prizeBL.GetAll().ElementAt(i).Title;
             }
 
-            for (int i = 0; i < data.users.Count; i++)
+            for (int i = 0; i < _prizeBL.GetAll().Count(); i++)
             {
-                data.users[i].RemovePrizeIfItHasBeenDeleted(prizeNames);
+                _userBL.GetAll().ElementAt(i).RemovePrizeIfItHasBeenDeleted(prizeNames);
             }
         }
     }

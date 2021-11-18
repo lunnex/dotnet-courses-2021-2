@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Entities;
+using Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -10,20 +13,26 @@ namespace WinForms
 {
     public partial class PrizeForm : Form
     {
-        Prize prize;
-        Data data;
+        private readonly Prize _prize;
+        private readonly User _user;
 
-        public PrizeForm(Data data)
-        {
-            this.data = data;
+        private readonly IPrizeBL _prizeBL;
+        private readonly IUserBL _userBL;
+
+        public PrizeForm(IPrizeBL prizeBL, IUserBL userBL)
+        { 
             InitializeComponent();
+            _prizeBL = prizeBL;
+            _userBL = userBL;
         }
 
-        public PrizeForm(Prize prize, Data data)
+        public PrizeForm(Prize prize, IPrizeBL prizeBL, IUserBL userBL)
         {
             InitializeComponent();
-            this.prize = prize;
-            this.data = data;
+            _prizeBL = prizeBL;
+            _userBL = userBL;
+            _prize = prize;
+
             textBoxNameOfPrize.Text = prize.Title;
             textBoxOfDescription.Text = prize.Description;
         }
@@ -33,44 +42,40 @@ namespace WinForms
 
             if (textBoxNameOfPrize.Text == "")
             {
-                ErrorForm errorForm = new ErrorForm("Name sholdn't be empty!");
+                ErrorForm errorForm = new ErrorForm("Name sholdn't be empty!", _prizeBL, _userBL);
                 errorForm.ShowDialog();
                 return;
             }
 
-            if (this.prize == null)
+            if (_prize == null)
             {
-                newPrize = new Prize(data.prizes.Count, textBoxNameOfPrize.Text, textBoxOfDescription.Text);
+                newPrize = new Prize(_prizeBL.GetAll().Count(), textBoxNameOfPrize.Text, textBoxOfDescription.Text);
             }
             else
             {
-                newPrize = new Prize(this.prize.ID, textBoxNameOfPrize.Text, textBoxOfDescription.Text);
+                newPrize = new Prize(_prize.ID, textBoxNameOfPrize.Text, textBoxOfDescription.Text);
 
-                foreach (User user in data.users)
+                foreach (User user in _userBL.GetAll())
                 {
-                    user.EditPrize(this.prize.Title, newPrize.Title);
+                    user.EditPrize(_prize.Title, newPrize.Title);
                 }
             }
 
-            for (int i = 0; i < data.prizes.Count; i++)
+            for (int i = 0; i < _prizeBL.GetAll().Count(); i++)
             {
-                if (data.prizes[i].IsIDEquals(newPrize))
+                if (new List<Prize>(_prizeBL.GetAll())[i].IsIDEquals(newPrize))
                 {
-                    data.prizes.Remove(prize);
+                    _prizeBL.Delete(_prize);
                 }
             }
 
-            if (this.prize == null)
+            if (_prize == null)
             {
-                data.prizes.Add(newPrize);
-                for(int i = 0; i <data.prizes.Count; i++)
-                {
-                    data.prizes[i].ID = i;
-                }
+                _prizeBL.Add(newPrize);
             }
             else
             {
-                data.prizes.Insert(this.prize.ID, newPrize);
+                _prizeBL.Edit(_prize, newPrize);
             }
             
             Close();

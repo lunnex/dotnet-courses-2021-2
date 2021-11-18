@@ -131,8 +131,6 @@ namespace WinForms
             this.Controls.Add(this.dateTimePickerDOB);
             this.Controls.Add(this.textBoxSecondName);
             this.Controls.Add(this.textBoxFirstName);
-            this.MaximumSize = new System.Drawing.Size(370, 310);
-            this.MinimumSize = new System.Drawing.Size(370, 310);
             this.Name = "UserForm";
             this.Text = "AddUser";
             this.ResumeLayout(false);

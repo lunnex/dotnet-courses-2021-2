@@ -83,7 +83,6 @@ namespace WinForms
             this.usersToolStripMenuItem,
             this.prizesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.MaximumSize = new System.Drawing.Size(1067, 1067);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1067, 24);
             this.menuStrip1.TabIndex = 2;
@@ -153,8 +152,6 @@ namespace WinForms
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximumSize = new System.Drawing.Size(1083, 639);
-            this.MinimumSize = new System.Drawing.Size(1083, 639);
             this.Name = "MainForm";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
