@@ -3,12 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Interfaces;
-using System.Linq;
 
-namespace DAL
+namespace DALDB
 {
+
     public class PrizeListDAO : IPrizeDAO
     {
+        
         private readonly List<Prize> _prizes = new List<Prize>()
         {
             new Prize (0, "Нобелевская премия по физике", ""),
@@ -20,15 +21,13 @@ namespace DAL
         {
             _prizes.Add(prize);
 
-            var max = _prizes.Max(x => x.ID);
-
             for(int i = 0; i < _prizes.Count; i++)
             {
                 _prizes[i].ID = i;
             }
         }
 
-        public void Edit(Prize oldPrize, Prize newPrize)//TODO сделать один параметр
+        public void Edit(Prize oldPrize, Prize newPrize)
         {
             int indexOfOldPrize = _prizes.FindIndex(0, x => oldPrize.ID == newPrize.ID);
             _prizes.Remove(oldPrize);

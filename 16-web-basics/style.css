@@ -1,0 +1,124 @@
+html{
+    display: flex;
+    flex-direction: column;
+    min-width: 1050px;
+}
+a{
+    text-decoration: none;
+    font-size: 32px;
+    
+}
+
+td{
+    align-content: center;
+}
+
+header{
+    
+}
+
+a:hover{
+    color: crimson;
+    
+}
+
+.mainHref{
+    padding-left: 10%;
+}
+
+.title{
+    font-size: 48px;
+}
+
+.footerAndHeaderHr{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.userForm{
+    margin-left: 30%;
+    margin-right: 30%;
+    align-content: center;
+    min-height: 80%;
+    border: 1px solid black;
+    border-radius: 20px;
+    
+}
+
+.prizeForm{
+    margin-left: 30%;
+    margin-right: 30%;
+    align-content: center;
+    min-height: 80%;
+    border: 1px solid black;
+    border-radius: 20px;
+    
+}
+
+.mainUser{
+    margin-left: 30%;
+    margin-right: 30%;
+    align-content: center;
+    min-height: 80%;
+}
+
+body{
+    height: 100%;
+}
+
+input{
+    border-right: none;
+    border-top: none;
+    border-left: none;
+    font-size: 20px;
+}
+
+.formText{
+    font-size:20px
+}
+
+form{
+    padding-left: 10%;
+}
+
+.acceptBtn{
+    margin-left: 75%;
+    font-size: 22px;
+    border-radius: 20px;
+    border-width: 1px;
+    border-color: rgb(150,150,150);
+    background-color: white; 
+    font-family: sans-serif;
+    margin-top: 20px;
+
+    width: 90px;
+    height: 43px;
+}
+
+.acceptBtn:hover{
+    background-color:crimson;
+    color: white;
+}
+
+.firstName{
+    min-width: 90%;
+}
+
+.lastName{
+    min-width: 90%;
+}
+.footerText{
+    text-align: center;
+   
+}
+
+.name{
+    min-width: 90%;
+}
+
+.description{
+    min-width: 90%;
+}
+footer{
+   
+}
+

@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css" type="text/css"/>
+        
+    </head>
+    <header>
+        <a href = "mainFormUsers.html" class = "mainHref">Пользователи</a>
+        <a href = "mainFormPrizes.html" class = "mainHref">Награды</a>
+        <hr class="footerAndHeaderHr">
+    </header>
+    <body>
+        <div class="userForm">
+            <form class = "form">
+                <p class = "title">Данные пользователя</p>
+                <p class = "formText1">Имя:</p>
+                <input type = "text" class = "firstName">
+                <p class = "errorName"></p>
+                
+                <p class = "formText2">Фамилия:</p>
+                <input type = "text" class = "lastName">
+                <p class = "errorLastName"></p>
+                
+                <p class="formText3">Дата рождения:</p>
+                <input type = "date" class = "dateOfBirth">
+                <p class = "errorDOB"></p>
+                
+                <p class = "formText4">Награды:</p>
+                
+                
+                <table>
+                    <tr>
+                        <td>
+                            <input type = "checkbox" class = "prizes"> Нобелевская премия по физике
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type = "checkbox" class = "prizes"> Оскар
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type = "checkbox" class = "prizes"> Золотая малина
+                        </td> 
+                    </tr>   
+                </table>
+                
+                
+                <button type="submit" class = "acceptBtn">Готово</button>
+            </form>
+            
+        </div>
+        
+       
+    </body>
+    <footer>
+        <hr class="footerAndHeaderHr">
+        <p class="footerText">Рязань, 2021</p>
+    </footer>
+    <script src = "scriptUser.js"></script> 
+</html>
