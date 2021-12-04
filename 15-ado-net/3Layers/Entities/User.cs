@@ -82,21 +82,6 @@ namespace Entities
             return false;
         }
 
-        //public User(int ID, string FirstNme, string LastName, string DateOfBirth, string PrizeStr)
-        //{
-        //    this.ID = ID;
-        //    this.FirstName = FirstNme;
-        //    this.LastName = LastName;
-        //    this.DateOfBirth = DateTime.Parse(DateOfBirth);
-        //    this.PrizeStr = PrizeStr;
-        //    string[] alluxaryStrArr = PrizeStr.Split(",");
-        //    foreach (string str in alluxaryStrArr)
-        //    {
-        //        this.ListOfPrize.Add(str);
-        //    }
-
-        //}
-
         public User(int ID, string FirstNme, string LastName, string DateOfBirth, IList<Prize> ListOfPrize)
         {
             this.ID = ID;
@@ -108,6 +93,11 @@ namespace Entities
                 this.ListOfPrize.Add(prize);
             }
             this.PrizeStr = GetStringOfPrizes(ListOfPrize);
+
+        }
+
+        public User()
+        {
 
         }
     }

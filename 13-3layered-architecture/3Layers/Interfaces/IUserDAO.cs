@@ -8,7 +8,7 @@ namespace Interfaces
     {
         public void Add(User user);
 
-        public void Edit(User oldUser, User newUser);
+        public void Edit(User newUser);
 
         public void Delete(User user);
 

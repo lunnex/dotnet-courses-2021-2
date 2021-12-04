@@ -20,9 +20,9 @@ namespace BLL
             _prizesDAO.Add(prize);
         }
 
-        public void Edit(Prize oldPrize, Prize newPrize)
+        public void Edit(Prize newPrize)
         {
-            _prizesDAO.Edit(oldPrize, newPrize);
+            _prizesDAO.Edit(newPrize);
         }
 
         public void Delete(Prize prize)

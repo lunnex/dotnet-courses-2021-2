@@ -1,0 +1,44 @@
+﻿@using Entities;
+@model IList<Prize>
+@{
+    ViewData["Title"] = "Index";
+}
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+    <div class="mainUser">
+        <a asp-controller="Prize" asp-action="Add" class="add">Добавить</a>
+
+        <table class="table">
+            <tr>
+                <th onclick="sortTable(0)">ID</th>
+                <th onclick="sortTable(1)">Название</th>
+                <th onclick="sortTable(2)">Описание</th>
+                <td></td>
+                <td></td>
+            </tr>
+
+            @foreach (var prize in Model)
+            {
+                <tr>
+                    <td name="id">@prize.ID</td>
+                    <td name="title">@prize.Title</td>
+                    <td name="description">@prize.Description</td>
+
+                    <td><a asp-controller="Prize" asp-action="Edit" asp-route-id="@prize.ID" class="edit">Редактировать</a></td>
+
+                    <form asp-action="Delete">
+                        <input type="hidden" value="@prize.ID" name="id">
+                    <td><button class="delete" type="submit">Удалить</button></td>
+                    </form>
+                </tr>
+            }
+        </table>
+    </div>
+
+<script src="~/js/sort.js" asp-append-version="true"></script>
+

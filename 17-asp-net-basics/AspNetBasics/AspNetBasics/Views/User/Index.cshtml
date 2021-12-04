@@ -1,0 +1,43 @@
+﻿@using Entities;
+@model IList<User>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+    <div class="mainUser">
+        <a asp-controller="User" asp-action="Add" class="add">Добавить</a>
+        <table class="table">
+            <tr>
+                <th onclick="sortTable(0)">ID</th>
+                <th onclick="sortTable(1)">Имя</th>
+                <th onclick="sortTable(2)">Фамилия</th>
+                <th onclick="sortTable(3)">Дата рождения</th>
+                <th onclick="sortTable(4)">Возраст</th>
+                <th onclick="sortTable(5)">Награды</th>
+                <td></td>
+                <td></td>
+            </tr>
+
+            @foreach (var user in Model)
+            {
+        <tr>
+            <td>@user.ID</td>
+            <td>@user.FirstName</td>
+            <td>@user.LastName</td>
+            <td>@user.DateOfBirth.Date</td>
+            <td>@user.Age</td>
+            <td>@user.PrizeStr</td>
+
+            <td><a asp-controller="User" asp-action="Edit" asp-route-id="@user.ID" class="edit">Редактировать</a></td>
+
+                <form asp-action="Delete">
+                    <input type="hidden" value="@user.ID" name="id">
+                    <td><button asp-controller="User" asp-action="Delete" class="delete">Удалить</button></td>
+                </form>
+            </tr>
+            }
+
+        </table>
+    </div>
+    <script src="~/js/sort.js" asp-append-version="true"></script>

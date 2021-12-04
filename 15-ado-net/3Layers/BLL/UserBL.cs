@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using DALDB;
+using Entities;
 using Interfaces;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,9 @@ namespace BLL
 {
     public class UserBL : IUserBL
     {
-        private readonly IUserDAO _userDAO;
+        private readonly UserDAL _userDAO;
 
-        public UserBL(IUserDAO userDAO)
+        public UserBL(UserDAL userDAO)
         {
             _userDAO = userDAO;
         }
@@ -20,14 +21,19 @@ namespace BLL
             _userDAO.Add(user);
         }
 
-        public void Delete(User user)
+        public void Delete(int id)
         {
-            _userDAO.Delete(user);
+            _userDAO.Delete(id);
         }
 
-        public void Edit(User oldUser, User newUser)
+        public void Edit(User newUser)
         {
-            _userDAO.Edit(oldUser, newUser);
+            _userDAO.Edit(newUser);
+        }
+
+        public User Get(int id)
+        {
+            return _userDAO.Get(id);
         }
 
         public void Clear()

@@ -25,11 +25,17 @@ namespace DAL
             }
         }
 
-        public void Edit(User oldUser, User newUser)
+        public void Edit(User newUser)//TODO сделать один параметр
         {
-            int indexOfOldPrize = _users.FindIndex(0, _users.Count, x => oldUser.ID == newUser.ID);
-            _users.Remove(oldUser);
-            _users.Insert(indexOfOldPrize, newUser);
+
+            foreach (User user in _users)
+            {
+                if (user.ID == newUser.ID)
+                {
+                    _users.Remove(user);
+                }
+            }
+            _users.Insert(newUser.ID, newUser);
         }
 
         public void Delete(User user)

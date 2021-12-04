@@ -9,7 +9,7 @@ namespace Interfaces
     {
         public void Add(Prize prize);
 
-        public void Edit(Prize oldPrize, Prize newPrize);
+        public void Edit(Prize newPrize);
 
         public void Delete(Prize prize);
 

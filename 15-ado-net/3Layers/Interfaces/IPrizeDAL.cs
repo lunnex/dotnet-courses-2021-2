@@ -5,13 +5,14 @@ using System.Text;
 
 namespace Interfaces
 {
-    public interface IPrizeDAO
+    public interface IPrizeDAL
     {
         public void Add(Prize prize);
 
-        public void Edit(Prize oldPrize, Prize newPrize);
+        public void Edit(Prize newPrize);
 
-        public void Delete(Prize prize);
+        public void Delete(int id);
+        public Prize Get(int id);
 
         public void Clear();
 

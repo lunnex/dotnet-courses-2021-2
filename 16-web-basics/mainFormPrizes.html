@@ -2,18 +2,18 @@
     <head>
         <link rel="stylesheet" href="style.css" type="text/css"/>
     </head>
-    <header>
-        <a href = "mainFormUsers.html" class = "mainHref">Пользователи</a>
-        <a href = "mainFormPrizes.html" class = "mainHref">Награды</a>
-        <hr class="footerAndHeaderHr">
-    </header>
     <body>
+        <header>
+            <a href = "mainFormUsers.html" class = "mainHref">Пользователи</a>
+            <a href = "mainFormPrizes.html" class = "mainHref">Награды</a>
+            <hr class="footerAndHeaderHr">
+        </header>
         <div class="mainUser">
-            <table>
+            <table class="table">
                 <tr>
-                    <th>ID</th>
-                    <th>Название</th>
-                    <th>Описание</th>
+                    <th onclick="sortTable(0)">ID</th>
+                    <th onclick="sortTable(1)">Название</th>
+                    <th onclick="sortTable(2)">Описание</th>
                     <td></td>
                     <td></td>
                 </tr>
@@ -43,8 +43,10 @@
                 </tr>
             </table>
         </div>
-    </body>
-    <footer><hr class="footerAndHeaderHr">
-        <p class="footerText">Рязань, 2021</p>
-    </footer>
+    
+            <footer><hr class="footerAndHeaderHr">
+                <p class="footerText">Рязань, 2021</p>
+            </footer>
+        <script src = "sort.js"></script>
+        </body>
 </html>

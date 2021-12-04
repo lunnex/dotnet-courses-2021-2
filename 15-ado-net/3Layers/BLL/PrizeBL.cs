@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using DALDB;
+using Entities;
 using Interfaces;
 using System;
 using System.Collections.Generic;
@@ -8,36 +9,40 @@ namespace BLL
 {
     public class PrizeBL : IPrizeBL
     {
-        private readonly IPrizeDAO _prizesDAO;
+        private readonly PrizeDAL _prizesDAL;
 
-        public PrizeBL(IPrizeDAO prizeDAO)
+        public PrizeBL(PrizeDAL prizeDAO)
         {
-            _prizesDAO = prizeDAO;
+            _prizesDAL = prizeDAO;
         }
 
         public void Add(Prize prize)
         {
-            _prizesDAO.Add(prize);
+            _prizesDAL.Add(prize);
         }
 
-        public void Edit(Prize oldPrize, Prize newPrize)
+        public void Edit(Prize newPrize)
         {
-            _prizesDAO.Edit(oldPrize, newPrize);
+            _prizesDAL.Edit(newPrize);
         }
 
-        public void Delete(Prize prize)
+        public void Delete(int id)
         {
-            _prizesDAO.Delete(prize);
+            _prizesDAL.Delete(id);
+        }
+        public Prize Get(int id)
+        {
+            return _prizesDAL.Get(id);
         }
 
         public void Clear()
         {
-            _prizesDAO.Clear();
+            _prizesDAL.Clear();
         }
 
         public List<Prize> GetAll()
         {
-            return _prizesDAO.GetAll();
+            return _prizesDAL.GetAll();
         }
     }
 }

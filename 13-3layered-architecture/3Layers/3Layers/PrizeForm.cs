@@ -75,7 +75,7 @@ namespace WinForms
             }
             else
             {
-                _prizeBL.Edit(_prize, newPrize);
+                _prizeBL.Edit(newPrize);
             }
             
             Close();

@@ -1,0 +1,23 @@
+﻿@using Entities
+@model Prize
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="prizeForm">
+    <form class="form" asp-action="Add">
+        <p class="title">Данные награды</p>
+
+        <p class="formText1">Название:</p>
+        <input asp-for="Title" type="text" class="name">
+        <p class="errorName"></p>
+
+        <p class="formText2">Описание:</p>
+        <input asp-for="Description" type="text" class="description">
+        <p class="errorDescription"></p>
+
+        <button type="submit" class="acceptBtn">Готово</button>
+    </form>
+</div>
+<script src="~/js/scriptPrize.js" asp-append-version="true"></script>
+

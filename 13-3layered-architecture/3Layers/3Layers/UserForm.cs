@@ -139,7 +139,7 @@ namespace WinForms
             }
             else
             {
-                _userBL.Edit(_user, newUser);
+                _userBL.Edit(newUser);
             }
             Close();
         }

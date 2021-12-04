@@ -1,0 +1,47 @@
+﻿@using Entities
+
+@model AddViewModel
+@{
+    ViewData["Title"] = "Add";
+}
+
+<body>
+    <div class="userForm">
+        <form class="form" asp-action="Add">
+            <p class="title">Данные пользователя</p>
+            <p class="formText1">Имя:</p>
+            <input asp-for="User.FirstName" type="text" class="firstName">
+            <p class="errorName"></p>
+
+            <p class="formText2">Фамилия:</p>
+            <input asp-for="User.LastName" type="text" class="lastName">
+            <p class="errorLastName"></p>
+
+            <p class="formText3">Дата рождения:</p>
+            <input asp-for="User.DateOfBirth" type="date" class="dateOfBirth">
+            <p class="errorDOB"></p>
+
+            <p class="formText4">Награды:</p>
+
+
+            <table>
+                @for (int i = 0; i < Model.prizes.Count; i++)
+                {
+                    <tr>
+                        <td>
+                            <input asp-for="prizesIsChecked[i]" type="checkbox" class="prizes"> @Model.prizes[i].Title
+                        </td>
+                    </tr>
+                }
+            </table>
+
+
+            <button type="submit" class="acceptBtn">Готово</button>
+        </form>
+
+    </div>
+
+
+</body>
+<script src="~/js/scriptUser.js" asp-append-version="true"></script>
+

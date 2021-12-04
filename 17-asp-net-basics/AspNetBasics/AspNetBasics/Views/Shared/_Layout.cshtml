@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="~/css/style.css" />
+    <meta charset="utf-8" />
+</head>
+
+    <body>
+    
+
+        <header>
+            <a href="/User" class="mainHref">Пользователи</a>
+            <a href="/Prize" class="mainHref">Награды</a>
+            <hr class="footerAndHeaderHr">
+        </header>
+
+
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+        <footer class="border-top footer text-muted">
+
+            <hr class="footerAndHeaderHr">
+            <p class="footerText">Рязань, 2021</p>
+        </footer>
+
+    </body>
+</html>

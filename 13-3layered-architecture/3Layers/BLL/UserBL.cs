@@ -25,9 +25,9 @@ namespace BLL
             _userDAO.Delete(user);
         }
 
-        public void Edit(User oldUser, User newUser)
+        public void Edit(User newUser)
         {
-            _userDAO.Edit(oldUser, newUser);
+            _userDAO.Edit(newUser);
         }
 
         public void Clear()

@@ -28,11 +28,17 @@ namespace DAL
             }
         }
 
-        public void Edit(Prize oldPrize, Prize newPrize)//TODO сделать один параметр
+        public void Edit(Prize newPrize)//TODO сделать один параметр
         {
-            int indexOfOldPrize = _prizes.FindIndex(0, x => oldPrize.ID == newPrize.ID);
-            _prizes.Remove(oldPrize);
-            _prizes.Insert(indexOfOldPrize, newPrize);
+
+            foreach(Prize prize in _prizes)
+            {
+                if (prize.ID == newPrize.ID)
+                {
+                    _prizes.Remove(prize);
+                }
+            }
+            _prizes.Insert(newPrize.ID, newPrize);
         }
 
         public void Delete(Prize prize)

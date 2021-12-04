@@ -4,13 +4,14 @@ using System.Collections.Generic;
 
 namespace Interfaces
 {
-    public interface IUserDAO
+    public interface IUserDAL
     {
         public void Add(User user);
 
-        public void Edit(User oldUser, User newUser);
+        public void Edit(User newUser);
 
-        public void Delete(User user);
+        public void Delete(int id);
+        public User Get(int id);
 
         public void Clear();
 

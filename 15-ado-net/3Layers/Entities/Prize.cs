@@ -10,6 +10,7 @@ namespace Entities
         public string Title { get; set; }
         public string Description { get; set; }
 
+
         public Prize(int ID, string Title, string Description)
         {
             this.ID = ID;
@@ -22,6 +23,12 @@ namespace Entities
             this.ID = 0;
             this.Title = Title;
             this.Description = Description;
+        }
+
+
+        public Prize()
+        {
+
         }
 
         public bool IsIDEquals(Prize prize)
