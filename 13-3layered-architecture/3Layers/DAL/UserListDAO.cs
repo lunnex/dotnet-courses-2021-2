@@ -18,11 +18,6 @@ namespace DAL
         public void Add(User user)
         {
             _users.Add(user);
-
-            for (int i = 0; i < _users.Count; i++)
-            {
-                _users[i].ID = i;
-            }
         }
 
         public void Edit(User newUser)//TODO сделать один параметр

@@ -19,13 +19,6 @@ namespace DAL
         public void Add(Prize prize)
         {
             _prizes.Add(prize);
-
-            var max = _prizes.Max(x => x.ID);
-
-            for(int i = 0; i < _prizes.Count; i++)
-            {
-                _prizes[i].ID = i;
-            }
         }
 
         public void Edit(Prize newPrize)//TODO сделать один параметр

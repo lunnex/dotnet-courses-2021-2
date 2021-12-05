@@ -47,26 +47,19 @@ namespace WinForms
                 return;
             }
 
+            List<int> listOfId = new List<int>();
+            foreach(Prize prize in _prizeBL.GetAll())
+            {
+                listOfId.Add(prize.ID);
+            }
+
             if (_prize == null)
             {
-                newPrize = new Prize(_prizeBL.GetAll().Count(), textBoxNameOfPrize.Text, textBoxOfDescription.Text);
+                newPrize = new Prize(listOfId.Max()+1, textBoxNameOfPrize.Text, textBoxOfDescription.Text);
             }
             else
             {
                 newPrize = new Prize(_prize.ID, textBoxNameOfPrize.Text, textBoxOfDescription.Text);
-
-                foreach (User user in _userBL.GetAll())
-                {
-                    user.EditPrize(_prize.Title, newPrize.Title);
-                }
-            }
-
-            for (int i = 0; i < _prizeBL.GetAll().Count(); i++)
-            {
-                if (new List<Prize>(_prizeBL.GetAll())[i].IsIDEquals(newPrize))
-                {
-                    _prizeBL.Delete(_prize);
-                }
             }
 
             if (_prize == null)

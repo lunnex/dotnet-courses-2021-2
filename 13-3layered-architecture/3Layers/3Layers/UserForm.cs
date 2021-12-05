@@ -114,10 +114,16 @@ namespace WinForms
                 return;
             }
 
+            List<int> listOfId = new List<int>();
+            foreach (User user in _userBL.GetAll())
+            {
+                listOfId.Add(user.ID);
+            }
+
             User newUser;
             if (_user == null)
             {
-                newUser = new User(_prizeBL.GetAll().Count(), textBoxFirstName.Text, textBoxSecondName.Text, dateTimePickerDOB.Value.Date.ToString(), checkedPrizes);
+                newUser = new User(listOfId.Max()+1, textBoxFirstName.Text, textBoxSecondName.Text, dateTimePickerDOB.Value.Date.ToString(), checkedPrizes);
             }
             else
             {
