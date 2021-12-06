@@ -18,6 +18,12 @@ namespace DAL
 
         public void Add(Prize prize)
         {
+            List<int> listOfId = new List<int>();
+            foreach (Prize prizes in _prizes)
+            {
+                listOfId.Add(prizes.ID);
+            }
+            prize.ID = listOfId.Max() + 1;
             _prizes.Add(prize);
         }
 

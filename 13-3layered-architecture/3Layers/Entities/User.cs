@@ -97,6 +97,19 @@ namespace Entities
 
         }
 
+        public User(string FirstNme, string LastName, string DateOfBirth, IList<string> ListOfPrize)
+        {
+            this.FirstName = FirstNme;
+            this.LastName = LastName;
+            this.DateOfBirth = DateTime.Parse(DateOfBirth);
+            foreach (string str in ListOfPrize)
+            {
+                this.ListOfPrize.Add(str);
+            }
+            this.PrizeStr = GetStringOfPrizes(ListOfPrize);
+
+        }
+
         public User(int ID, string FirstNme, string LastName, string DateOfBirth, IList<string> ListOfPrize)
         {
             this.ID = ID;

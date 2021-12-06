@@ -2,6 +2,7 @@
 using Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace DAL
@@ -17,6 +18,13 @@ namespace DAL
 
         public void Add(User user)
         {
+            List<int> listOfId = new List<int>();
+            foreach (User users in _users)
+            {
+                listOfId.Add(users.ID);
+            }
+            user.ID = listOfId.Max() + 1;
+
             _users.Add(user);
         }
 

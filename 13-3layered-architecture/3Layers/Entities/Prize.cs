@@ -19,7 +19,6 @@ namespace Entities
 
         public Prize(string Title, string Description)
         {
-            this.ID = 0;
             this.Title = Title;
             this.Description = Description;
         }

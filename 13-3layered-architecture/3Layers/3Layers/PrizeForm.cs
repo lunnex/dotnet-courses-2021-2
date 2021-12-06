@@ -45,30 +45,15 @@ namespace WinForms
                 ErrorForm errorForm = new ErrorForm("Name sholdn't be empty!", _prizeBL, _userBL);
                 errorForm.ShowDialog();
                 return;
-            }
-
-            List<int> listOfId = new List<int>();
-            foreach(Prize prize in _prizeBL.GetAll())
-            {
-                listOfId.Add(prize.ID);
-            }
+            }      
 
             if (_prize == null)
             {
-                newPrize = new Prize(listOfId.Max()+1, textBoxNameOfPrize.Text, textBoxOfDescription.Text);
+                newPrize = new Prize(textBoxNameOfPrize.Text, textBoxOfDescription.Text);
             }
             else
             {
-                newPrize = new Prize(_prize.ID, textBoxNameOfPrize.Text, textBoxOfDescription.Text);
-            }
-
-            if (_prize == null)
-            {
-                _prizeBL.Add(newPrize);
-            }
-            else
-            {
-                _prizeBL.Edit(newPrize);
+                newPrize = new Prize(textBoxNameOfPrize.Text, textBoxOfDescription.Text);
             }
             
             Close();

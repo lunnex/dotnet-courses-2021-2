@@ -114,30 +114,15 @@ namespace WinForms
                 return;
             }
 
-            List<int> listOfId = new List<int>();
-            foreach (User user in _userBL.GetAll())
-            {
-                listOfId.Add(user.ID);
-            }
-
             User newUser;
             if (_user == null)
             {
-                newUser = new User(listOfId.Max()+1, textBoxFirstName.Text, textBoxSecondName.Text, dateTimePickerDOB.Value.Date.ToString(), checkedPrizes);
+                newUser = new User(textBoxFirstName.Text, textBoxSecondName.Text, dateTimePickerDOB.Value.Date.ToString(), checkedPrizes);
             }
             else
             {
-                newUser = new User(_user.ID, textBoxFirstName.Text, textBoxSecondName.Text, dateTimePickerDOB.Value.Date.ToString(), checkedPrizes);
+                newUser = new User(textBoxFirstName.Text, textBoxSecondName.Text, dateTimePickerDOB.Value.Date.ToString(), checkedPrizes);
             }
-
-            for (int i = 0; i < _userBL.GetAll().Count(); i++)
-            {
-                if (new List<User>(_userBL.GetAll())[i].IsIDEquals(newUser))
-                {
-                    _userBL.Delete(_user);
-                }
-            }
-
 
             if (_user == null)
             {
